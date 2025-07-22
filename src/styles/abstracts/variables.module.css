@@ -1,0 +1,62 @@
+:root {
+    --font: "Inter", sans-serif;
+    --color-background-soft-gray: rgb(240, 242, 245);
+    /* Soft light gray background */
+    --color-background-white: rgb(255, 255, 255);
+    /* White, for app container background */
+    --color-text-dark-gray: rgb(51, 51, 51);
+    /* Dark gray, for general text */
+    --color-text-medium-gray: rgb(74, 85, 104);
+    /* Medium gray, for artist name */
+    --color-text-light-gray: rgb(107, 114, 128);
+    /* Light gray, for playlist item duration */
+    --color-text-indigo-dark: rgb(67, 56, 202);
+    /* Dark indigo, for active playlist item text */
+    --color-text-track-title: rgb(26, 32, 44);
+    /* Dark gray, for track title */
+    --color-primary-indigo: rgb(99, 102, 241);
+    /* Primary indigo, for buttons, slider thumb, and progress bar start */
+    --color-primary-indigo-hover: rgb(79, 70, 229);
+    /* Primary indigo hover, for button hover */
+    --color-secondary-purple: rgb(139, 92, 246);
+    /* Secondary purple, for progress bar end */
+    --color-border-light-gray: rgb(226, 232, 240);
+    /* Light gray, for borders */
+    --color-border-medium-gray: rgb(203, 213, 225);
+    /* Medium gray, for scrollbar thumb and device switcher border */
+    --color-border-dark-gray-hover: rgb(148, 163, 184);
+    /* Darker gray, for scrollbar thumb on hover */
+    --color-button-background-light: rgb(237, 242, 247);
+    /* Light background for prev/next buttons */
+    --color-button-background-light-hover: rgb(226, 232, 240);
+    /* Light background hover for prev/next buttons */
+    --color-notification-background: rgb(59, 130, 246);
+    /* Blue background for notifications */
+    --color-notification-text: rgb(255, 255, 255);
+    /* White text for notifications */
+    --color-playlist-active-background: rgb(191, 219, 254);
+    /* Light blue background for active playlist item */
+    --color-playlist-hover-background: rgb(238, 242, 255);
+    /* Very light blue for playlist item hover */
+    --color-placeholder-album-1: rgb(167, 139, 250);
+    /* Placeholder album art color 1 */
+    --color-placeholder-album-2: rgb(139, 92, 246);
+    /* Placeholder album art color 2 */
+    --color-placeholder-album-3: rgb(99, 102, 241);
+    /* Placeholder album art color 3 */
+    --color-placeholder-album-4: rgb(79, 70, 229);
+    /* Placeholder album art color 4 */
+    --color-placeholder-album-5: rgb(55, 48, 163);
+    /* Placeholder album art color 5 */
+    --color-placeholder-album-6: rgb(30, 41, 59);
+    /* Placeholder album art color 6 */
+    --color-placeholder-album-7: rgb(249, 115, 22);
+    /* Placeholder album art color 7 */
+    --color-placeholder-album-8: rgb(251, 191, 36);
+    /* Placeholder album art color 8 */
+    --color-placeholder-album-9: rgb(250, 204, 21);
+    /* Placeholder album art color 9 */
+    --color-placeholder-album-10: rgb(234, 179, 8);
+    /* Placeholder album art color 10 */
+
+}
