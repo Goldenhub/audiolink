@@ -1,0 +1,46 @@
+.PlayList {
+    position: static;
+    background-color: var(--color-background-soft-gray);
+
+    .PlayListHeading {
+        padding: 10px;
+    }
+
+    .PlayListItems {
+        padding: 10px;
+
+        .PlayListItem {
+            display: inline-block;
+            text-align: start;
+            width: 100%;
+            margin-bottom: 20px;
+            outline: none;
+            padding: 10px;
+
+            &:hover {
+                background-color: var(--color-playlist-hover-background);
+            }
+
+            &.Active {
+                background-color: var(--color-playlist-active-background);
+
+                .PlayListItemHeading {
+                    color: var(--color-text-indigo-dark);
+                }
+            }
+
+            .PlayListTexts {
+                display: flex;
+                align-items: start;
+                justify-content: space-between;
+                /* gap: 5px; */
+            }
+
+        }
+    }
+
+    @media screen and (max-width: 999px) {
+        position: absolute;
+        left: -1000px;
+    }
+}

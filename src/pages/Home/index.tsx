@@ -1,10 +1,12 @@
 import { Playlist } from "@/components/Playlist";
+import Style from "./style.module.css";
+import { Player } from "@/components/Player";
 
 export const Home = () => {
   return (
-    <div>
+    <div className={Style.Home}>
       <Playlist />
-      <p>Your seamless music syncing solution.</p>
+      <Player />
     </div>
   );
 };

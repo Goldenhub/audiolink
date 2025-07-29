@@ -1,0 +1,46 @@
+.Player {
+    border-top: 2px solid var(--color-background-soft-gray);
+    background-color: var(--color-background-white);
+    border-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .Info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        .Banner {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            background-color: var(--color-placeholder-album-1);
+
+            .BannerTitle {
+                color: var(--color-text-white);
+                font-size: 1.3rem;
+                font-weight: bolder;
+                text-align: center;
+            }
+        }
+
+        .Title {
+            text-align: center;
+            color: var(--color-text-track-title);
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .Artist {
+            text-align: center;
+            color: var(--color-text-medium-gray);
+        }
+    }
+}

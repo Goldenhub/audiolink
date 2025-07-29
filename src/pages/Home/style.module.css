@@ -1,0 +1,9 @@
+.Home {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    column-gap: 20px;
+
+    @media screen and (max-width: 999px) {
+        grid-template-columns: 1fr;
+    }
+}

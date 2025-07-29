@@ -1,12 +1,15 @@
+import { PanelLeftOpen } from "lucide-react";
 import { NavLink } from "react-router";
+import Style from "./style.module.css";
 
 export const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <>
-      <header>
+    <div className={Style.App}>
+      <header className={Style.Header}>
         <nav>
-          <ul>
-            <li>
+          <ul className={Style.NavList}>
+            <li className={Style.NavBrand}>
+              <PanelLeftOpen className={Style.TogglePanel} />
               <NavLink to="/">
                 <span role="img" aria-label="logo">
                   🎧 audioLink
@@ -20,6 +23,6 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
         </nav>
       </header>
       <main>{children}</main>
-    </>
+    </div>
   );
 };

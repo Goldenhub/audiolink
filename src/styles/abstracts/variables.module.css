@@ -14,6 +14,8 @@
     /* Dark indigo, for active playlist item text */
     --color-text-track-title: rgb(26, 32, 44);
     /* Dark gray, for track title */
+    --color-text-white: rgb(255, 255, 255);
+    /* White color, for text */
     --color-primary-indigo: rgb(99, 102, 241);
     /* Primary indigo, for buttons, slider thumb, and progress bar start */
     --color-primary-indigo-hover: rgb(79, 70, 229);
@@ -58,5 +60,6 @@
     /* Placeholder album art color 9 */
     --color-placeholder-album-10: rgb(234, 179, 8);
     /* Placeholder album art color 10 */
+    --shadow-app: 0 10px 30px rgba(0, 0, 0, 0.08);
 
 }
