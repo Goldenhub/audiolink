@@ -62,13 +62,6 @@ export const Player = () => {
     };
   }, [audioItem, handleNext]);
 
-  // useEffect(() => {
-  //   if (audioRef.current) {
-  //     audioRef.current.volume = volume;
-  //   }
-  //   console.log("t");
-  // });
-
   const handlePlay = () => {
     audioRef.current?.play();
     shouldPlayRef.current = true;
