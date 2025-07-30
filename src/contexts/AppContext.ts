@@ -7,6 +7,8 @@ export const AppContext = createContext<{
   audioList: (IAudioMetaData & IPlayListItem)[] | undefined;
   isPanelOpen: boolean;
   setPanelOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  volume: number;
+  setVolume: React.Dispatch<React.SetStateAction<number>>;
 } | null>(null);
 
 export const useAppContext = () => {

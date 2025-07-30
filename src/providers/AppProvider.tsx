@@ -10,6 +10,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [audioList, setAudioList] = useState<(IAudioMetaData & IPlayListItem)[]>();
   const [isPanelOpen, setPanelOpen] = useState<boolean>(false);
+  const [volume, setVolume] = useState<number>(0.5);
   useEffect(() => {
     const loadMetaData = async () => {
       const playlistWithMetaData = await Promise.all(
@@ -25,5 +26,5 @@ export function AppProvider({ children }: { children: ReactNode }) {
     };
     loadMetaData();
   }, []);
-  return <AppContext.Provider value={{ currentIndex, setCurrentIndex, audioList, isPanelOpen, setPanelOpen }}>{children}</AppContext.Provider>;
+  return <AppContext.Provider value={{ currentIndex, setCurrentIndex, audioList, isPanelOpen, setPanelOpen, volume, setVolume }}>{children}</AppContext.Provider>;
 }

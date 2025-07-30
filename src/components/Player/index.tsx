@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { MinusCircleIcon, PauseIcon, PlayIcon, PlusCircleIcon, SkipBackIcon, SkipForwardIcon } from "lucide-react";
 
 export const Player = () => {
-  const { currentIndex, setCurrentIndex, audioList } = useAppContext();
+  const { currentIndex, setCurrentIndex, audioList, volume, setVolume } = useAppContext();
   const audioItem = audioList?.find((item) => item.id === currentIndex);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -15,7 +15,6 @@ export const Player = () => {
 
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.pause();
       audioRef.current.currentTime = 0;
     }
 
@@ -27,7 +26,10 @@ export const Player = () => {
     }
 
     const handleLoaded = () => {
-      setDuration(audioRef.current?.duration ?? 0);
+      if (audioRef.current) {
+        setDuration(audioRef.current.duration ?? 0);
+        audioRef.current.volume = volume;
+      }
     };
 
     const handleTimeUpdate = () => {
@@ -82,6 +84,7 @@ export const Player = () => {
       const newVal = audioRef.current.volume + 0.1;
       if (newVal <= 1) {
         audioRef.current.volume = newVal;
+        setVolume(newVal);
       }
     }
   };
@@ -90,6 +93,7 @@ export const Player = () => {
       const newVal = audioRef.current.volume - 0.1;
       if (newVal > 0) {
         audioRef.current.volume = newVal;
+        setVolume(newVal);
       }
     }
   };
@@ -116,7 +120,7 @@ export const Player = () => {
           <button title="volume down" type="button" onClick={reduceVolume} className={Style.Decrease}>
             <MinusCircleIcon size={16} />
           </button>
-          <meter title="volume" max={1} min={0} value={audioRef.current?.volume ?? 1} className={Style.Meter}></meter>
+          <meter title="volume" max={1} min={0} value={volume} className={Style.Meter}></meter>
           <button title="volume up" type="button" onClick={increaseVolume} className={Style.Increase}>
             <PlusCircleIcon size={16} />
           </button>
