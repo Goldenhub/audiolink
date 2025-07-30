@@ -2,6 +2,7 @@ export interface IPlayListItem {
   id: number;
   title: string;
   artist: string;
+  url: string;
 }
 
 export interface IAudioMetaData {

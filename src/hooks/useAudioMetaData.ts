@@ -2,7 +2,7 @@ import type { IAudioMetaData } from "@/types/types";
 
 export const getAudioMetaData = async (src: string): Promise<IAudioMetaData> => {
   return new Promise((resolve, reject) => {
-    const audio = new Audio(src + ".mp3");
+    const audio = new Audio(src);
 
     const onLoaded = () => {
       resolve({
@@ -16,7 +16,7 @@ export const getAudioMetaData = async (src: string): Promise<IAudioMetaData> => 
     };
 
     const onError = () => {
-      reject(new Error(`Failed to load audio file: ${src}`));
+      reject(new Error(`Failed to load audio: ${src}`));
       cleanup();
     };
 

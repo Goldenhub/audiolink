@@ -14,7 +14,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const loadMetaData = async () => {
       const playlistWithMetaData = await Promise.all(
         PLAYLIST.map(async (item) => {
-          const meta = await getAudioMetaData(item.title);
+          const meta = await getAudioMetaData(item.url);
           return {
             ...item,
             ...meta,
