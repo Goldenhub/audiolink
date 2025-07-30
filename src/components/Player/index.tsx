@@ -1,7 +1,7 @@
 import Style from "./style.module.css";
 import { useAppContext } from "@/contexts/AppContext";
 import { SeekBar } from "../SeekBar";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { MinusCircleIcon, PauseIcon, PlayIcon, PlusCircleIcon, SkipBackIcon, SkipForwardIcon } from "lucide-react";
 
 export const Player = () => {
@@ -12,6 +12,19 @@ export const Player = () => {
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const shouldPlayRef = useRef(false);
+
+  if (audioRef.current) {
+    audioRef.current.volume = volume;
+  }
+  const handleNext = useCallback(() => {
+    if (audioRef.current && audioList?.length) {
+      setCurrentIndex((prev) => {
+        const next = prev + 1;
+        return next > audioList.length ? 1 : next;
+      });
+    }
+    shouldPlayRef.current = true;
+  }, [audioList, setCurrentIndex]);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -28,12 +41,14 @@ export const Player = () => {
     const handleLoaded = () => {
       if (audioRef.current) {
         setDuration(audioRef.current.duration ?? 0);
-        audioRef.current.volume = volume;
       }
     };
 
     const handleTimeUpdate = () => {
       setCurrentTime(audioRef.current?.currentTime ?? 0);
+      if (audioRef.current?.currentTime === audioRef.current?.duration) {
+        handleNext();
+      }
     };
 
     audio.addEventListener("loadedmetadata", handleLoaded);
@@ -45,7 +60,14 @@ export const Player = () => {
       audio.pause();
       audioRef.current = null;
     };
-  }, [audioItem]);
+  }, [audioItem, handleNext]);
+
+  // useEffect(() => {
+  //   if (audioRef.current) {
+  //     audioRef.current.volume = volume;
+  //   }
+  //   console.log("t");
+  // });
 
   const handlePlay = () => {
     audioRef.current?.play();
@@ -53,20 +75,8 @@ export const Player = () => {
   };
 
   const handlePause = () => {
-    if (audioRef.current) {
-      audioRef.current?.pause();
-    }
+    audioRef.current?.pause();
     shouldPlayRef.current = false;
-  };
-
-  const handleNext = () => {
-    if (audioRef.current && audioList?.length) {
-      setCurrentIndex((prev) => {
-        const next = prev + 1;
-        return next > audioList.length ? 1 : next;
-      });
-    }
-    shouldPlayRef.current = true;
   };
 
   const handlePrevious = () => {
@@ -103,6 +113,7 @@ export const Player = () => {
       audioRef.current.currentTime = val;
     }
   };
+
   return (
     <div className={Style.Player}>
       <div className={Style.Info}>
