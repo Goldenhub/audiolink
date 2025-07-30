@@ -76,12 +76,18 @@ export const Player = () => {
 
   const increaseVolume = () => {
     if (audioRef.current) {
-      audioRef.current.volume += 0.1;
+      const newVal = audioRef.current.volume + 0.1;
+      if (newVal <= 1) {
+        audioRef.current.volume = newVal;
+      }
     }
   };
   const reduceVolume = () => {
     if (audioRef.current) {
-      audioRef.current.volume -= 0.1;
+      const newVal = audioRef.current.volume - 0.1;
+      if (newVal > 0) {
+        audioRef.current.volume = newVal;
+      }
     }
   };
 
@@ -118,7 +124,7 @@ export const Player = () => {
       <button type="button" onClick={increaseVolume}>
         +
       </button>
-      <meter title="volume" max={1} min={0} value={audioRef.current?.volume.toFixed(1)} className={Style.Meter}></meter>
+      <meter title="volume" max={1} min={0} value={audioRef.current?.volume ?? 1} className={Style.Meter}></meter>
       <button type="button" onClick={reduceVolume}>
         -
       </button>
