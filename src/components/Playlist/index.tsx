@@ -4,10 +4,11 @@ import { formatTime } from "@/utils/helpers";
 import { useAppContext } from "@/contexts/AppContext";
 
 export const Playlist = () => {
-  const { audioList, currentSong, setCurrentSong } = useAppContext();
+  const { audioList, currentIndex, setCurrentIndex } = useAppContext();
+  const currentSong = audioList?.find((item) => item.id === currentIndex);
   const handleSongChange = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const song = e.currentTarget.value;
-    setCurrentSong(song);
+    const index = audioList?.find((item) => item.id === Number(e.currentTarget.value))?.id;
+    setCurrentIndex(index!);
   };
 
   return (
@@ -15,7 +16,7 @@ export const Playlist = () => {
       <h2 className={Style.PlayListHeading}>Playlist</h2>
       <div className={Style.PlayListItems}>
         {audioList?.map((item: IAudioMetaData & IPlayListItem) => (
-          <button value={item.title} type="button" key={item.id} className={`${Style.PlayListItem} ${currentSong === item.title ? Style.Active : ""}`} onClick={handleSongChange}>
+          <button value={item.id} type="button" key={item.id} className={`${Style.PlayListItem} ${currentSong?.title === item.title ? Style.Active : ""}`} onClick={handleSongChange}>
             <div className={Style.PlayListTexts}>
               <div>
                 <h3 className={Style.PlayListItemHeading}>{item.title}</h3>

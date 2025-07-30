@@ -3,7 +3,6 @@ import type { IAudioMetaData } from "@/types/types";
 export const getAudioMetaData = async (src: string): Promise<IAudioMetaData> => {
   return new Promise((resolve, reject) => {
     const audio = new Audio(src + ".mp3");
-    console.dir(audio);
 
     const onLoaded = () => {
       resolve({

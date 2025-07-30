@@ -7,7 +7,7 @@ import { type IAudioMetaData, type IPlayListItem } from "@/types/types";
 import { getAudioMetaData } from "@/hooks/useAudioMetaData";
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [currentSong, setCurrentSong] = useState(PLAYLIST[0].title);
+  const [currentIndex, setCurrentIndex] = useState(1);
   const [audioList, setAudioList] = useState<(IAudioMetaData & IPlayListItem)[]>();
 
   useEffect(() => {
@@ -25,5 +25,5 @@ export function AppProvider({ children }: { children: ReactNode }) {
     };
     loadMetaData();
   }, []);
-  return <AppContext.Provider value={{ currentSong, setCurrentSong, audioList }}>{children}</AppContext.Provider>;
+  return <AppContext.Provider value={{ currentIndex, setCurrentIndex, audioList }}>{children}</AppContext.Provider>;
 }

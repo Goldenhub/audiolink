@@ -11,3 +11,9 @@ export interface IAudioMetaData {
   setAudioTime: (time: number) => void;
   audio: HTMLAudioElement;
 }
+
+export interface ISeekBarProps {
+  value: number;
+  max: number;
+  onChange: (value: number) => void;
+}

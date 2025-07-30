@@ -43,4 +43,13 @@
             color: var(--color-text-medium-gray);
         }
     }
+
+    .Meter {
+        width: 50px;
+
+        &::-webkit-meter-optimum-value {
+            background: var(--color-primary-indigo);
+            border-radius: 10px 0 0 10px;
+        }
+    }
 }

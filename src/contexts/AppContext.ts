@@ -2,8 +2,8 @@ import type { IAudioMetaData, IPlayListItem } from "@/types/types";
 import { createContext, useContext } from "react";
 
 export const AppContext = createContext<{
-  currentSong: string;
-  setCurrentSong: React.Dispatch<React.SetStateAction<string>>;
+  currentIndex: number;
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
   audioList: (IAudioMetaData & IPlayListItem)[] | undefined;
 } | null>(null);
 
