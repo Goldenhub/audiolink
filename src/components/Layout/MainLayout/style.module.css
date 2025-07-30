@@ -1,4 +1,5 @@
 .App {
+    position: relative;
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
@@ -7,27 +8,7 @@
     box-shadow: var(--shadow-app);
     overflow: hidden;
 
-    .Header {
-        width: 100%;
-        padding: 20px 10px;
-        background-color: var(--color-background-white);
-
-        .NavList {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .NavBrand {
-            display: flex;
-            gap: 2rem;
-
-            .TogglePanel {
-                display: none;
-
-                @media screen and (max-width: 999px) {
-                    display: inline-block
-                }
-            }
-        }
+    @media screen and (max-width: 999px) {
+        height: 100vh
     }
 }

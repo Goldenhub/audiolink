@@ -2,6 +2,7 @@ import Style from "./style.module.css";
 import { useAppContext } from "@/contexts/AppContext";
 import { SeekBar } from "../SeekBar";
 import { useEffect, useRef, useState } from "react";
+import { MinusCircleIcon, PauseIcon, PlayIcon, PlusCircleIcon, SkipBackIcon, SkipForwardIcon } from "lucide-react";
 
 export const Player = () => {
   const { currentIndex, setCurrentIndex, audioList } = useAppContext();
@@ -46,12 +47,14 @@ export const Player = () => {
 
   const handlePlay = () => {
     audioRef.current?.play();
+    shouldPlayRef.current = true;
   };
 
   const handlePause = () => {
     if (audioRef.current) {
       audioRef.current?.pause();
     }
+    shouldPlayRef.current = false;
   };
 
   const handleNext = () => {
@@ -108,27 +111,36 @@ export const Player = () => {
         </div>
       </div>
       <SeekBar max={duration} value={currentTime} onChange={handleSeek} />
-      {/* <div className={Style.Controls}> */}
-      <button type="button" onClick={handlePlay}>
-        Play
-      </button>
-      <button type="button" onClick={handlePause}>
-        Pause
-      </button>
-      <button type="button" onClick={handlePrevious}>
-        Previous
-      </button>
-      <button type="button" onClick={handleNext}>
-        Next
-      </button>
-      <button type="button" onClick={increaseVolume}>
-        +
-      </button>
-      <meter title="volume" max={1} min={0} value={audioRef.current?.volume ?? 1} className={Style.Meter}></meter>
-      <button type="button" onClick={reduceVolume}>
-        -
-      </button>
-      {/* </div> */}
+      <div className={Style.Controls}>
+        <div className={Style.VolumeControl}>
+          <button title="volume down" type="button" onClick={reduceVolume} className={Style.Decrease}>
+            <MinusCircleIcon size={16} />
+          </button>
+          <meter title="volume" max={1} min={0} value={audioRef.current?.volume ?? 1} className={Style.Meter}></meter>
+          <button title="volume up" type="button" onClick={increaseVolume} className={Style.Increase}>
+            <PlusCircleIcon size={16} />
+          </button>
+        </div>
+        <div className={Style.MainControls}>
+          <button title="previous" type="button" onClick={handlePrevious} className={Style.Previous}>
+            <SkipBackIcon />
+          </button>
+          <div>
+            {shouldPlayRef.current ? (
+              <button title="pause" type="button" onClick={handlePause} className={Style.TogglePlay}>
+                <PauseIcon color="white" size={25} />
+              </button>
+            ) : (
+              <button title="play" type="button" onClick={handlePlay} className={Style.TogglePlay}>
+                <PlayIcon color="white" size={25} />
+              </button>
+            )}
+          </div>
+          <button title="next" type="button" onClick={handleNext} className={Style.Next}>
+            <SkipForwardIcon />
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

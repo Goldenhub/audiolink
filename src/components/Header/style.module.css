@@ -1,0 +1,23 @@
+.Header {
+    width: 100%;
+    padding: 10px 10px;
+    background-color: var(--color-background-white);
+
+    .NavList {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .NavBrand {
+        display: flex;
+        gap: 2rem;
+
+        .TogglePanel {
+            display: none;
+
+            @media screen and (max-width: 999px) {
+                display: inline-block
+            }
+        }
+    }
+}

@@ -9,7 +9,7 @@ import { getAudioMetaData } from "@/hooks/useAudioMetaData";
 export function AppProvider({ children }: { children: ReactNode }) {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [audioList, setAudioList] = useState<(IAudioMetaData & IPlayListItem)[]>();
-
+  const [isPanelOpen, setPanelOpen] = useState<boolean>(false);
   useEffect(() => {
     const loadMetaData = async () => {
       const playlistWithMetaData = await Promise.all(
@@ -25,5 +25,5 @@ export function AppProvider({ children }: { children: ReactNode }) {
     };
     loadMetaData();
   }, []);
-  return <AppContext.Provider value={{ currentIndex, setCurrentIndex, audioList }}>{children}</AppContext.Provider>;
+  return <AppContext.Provider value={{ currentIndex, setCurrentIndex, audioList, isPanelOpen, setPanelOpen }}>{children}</AppContext.Provider>;
 }

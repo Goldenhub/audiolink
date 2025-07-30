@@ -44,12 +44,63 @@
         }
     }
 
-    .Meter {
-        width: 50px;
+    .Controls {
+        display: flex;
+        flex-direction: column;
 
-        &::-webkit-meter-optimum-value {
-            background: var(--color-primary-indigo);
-            border-radius: 10px 0 0 10px;
+        & button {
+            outline: none;
         }
+
+        .MainControls {
+            display: flex;
+            gap: 2rem;
+            margin-top: 20px;
+
+            .TogglePlay {
+                background: var(--color-primary-indigo);
+                padding: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 100%;
+
+                &:hover {
+                    background: var(--color-primary-indigo-hover);
+                }
+            }
+
+            .Next:hover,
+            .Previous:hover {
+                color: var(--color-primary-indigo-hover);
+            }
+        }
+
+        .VolumeControl {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+            justify-content: center;
+            margin-top: 10px;
+
+            &:hover meter::-webkit-meter-optimum-value {
+                background-color: var(--color-primary-indigo-hover);
+            }
+
+            .Meter {
+                width: 50px;
+
+                &::-webkit-meter-optimum-value {
+                    background-color: var(--color-placeholder-album-6);
+                    border-radius: 10px 0 0 10px;
+                }
+            }
+
+            .Increase:hover,
+            .Decrease:hover {
+                color: var(--color-primary-indigo);
+            }
+        }
+
     }
 }
