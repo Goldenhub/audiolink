@@ -5,7 +5,7 @@ import { useAppContext } from "@/contexts/AppContext";
 import { AnimatePresence, motion } from "motion/react";
 
 export const Playlist = () => {
-  const { audioList, currentIndex, setCurrentIndex, isPanelOpen } = useAppContext();
+  const { audioList, currentIndex, setCurrentIndex, isPanelOpen, setPanelOpen } = useAppContext();
   const currentSong = audioList?.find((item) => item.id === currentIndex);
   const handleSongChange = (e: React.MouseEvent<HTMLButtonElement>) => {
     const index = audioList?.find((item) => item.id === Number(e.currentTarget.value))?.id;
@@ -16,7 +16,7 @@ export const Playlist = () => {
     <>
       <AnimatePresence mode="wait">
         {isPanelOpen && (
-          <motion.div initial={{ opacity: 0, left: -1000 }} animate={{ opacity: 1, left: 0 }} exit={{ opacity: 0.5, left: -1000 }} transition={{ duration: 0.5, ease: "easeInOut" }} className={Style.PlayList}>
+          <motion.div initial={{ opacity: 0, left: -1000 }} animate={{ opacity: 1, left: 0 }} exit={{ opacity: 0.5, left: -1000 }} transition={{ duration: 0.5, ease: "easeInOut" }} className={Style.PlayList} onClick={() => setPanelOpen(false)}>
             <h2 className={Style.PlayListHeading}>Playlist</h2>
             <div className={Style.PlayListItems}>
               {audioList?.map((item: IAudioMetaData & IPlayListItem) => (
