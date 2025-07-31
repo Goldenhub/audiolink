@@ -1,6 +1,6 @@
 import type { IAudioMetaData } from "@/types/types";
 
-export const getAudioMetaData = async (src: string): Promise<IAudioMetaData> => {
+export const useAudioMetaData = async (src: string): Promise<IAudioMetaData> => {
   return new Promise((resolve, reject) => {
     const audio = new Audio(src);
 

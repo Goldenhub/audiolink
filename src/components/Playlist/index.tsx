@@ -3,10 +3,15 @@ import { type IAudioMetaData, type IPlayListItem } from "@/types/types";
 import { formatTime } from "@/utils/helpers";
 import { useAppContext } from "@/contexts/AppContext";
 import { AnimatePresence, motion } from "motion/react";
+import { useMemo } from "react";
 
 export const Playlist = () => {
   const { audioList, currentIndex, setCurrentIndex, isPanelOpen, setPanelOpen } = useAppContext();
-  const currentSong = audioList?.find((item) => item.id === currentIndex);
+
+  const currentSong = useMemo(() => {
+    return audioList?.find((item) => item.id === currentIndex);
+  }, [currentIndex, audioList]);
+
   const handleSongChange = (e: React.MouseEvent<HTMLButtonElement>) => {
     const index = audioList?.find((item) => item.id === Number(e.currentTarget.value))?.id;
     setCurrentIndex(index!);
