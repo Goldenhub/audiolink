@@ -5,13 +5,13 @@ import { useEffect, useState } from "react";
 import { PLAYLIST } from "../constants/audioList";
 import { type IAudioMetaData, type IPlayListItem } from "@/types/types";
 import { useAudioMetaData } from "@/hooks/useAudioMetaData";
+const meta = useAudioMetaData;
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [audioList, setAudioList] = useState<(IAudioMetaData & IPlayListItem)[]>();
   const [isPanelOpen, setPanelOpen] = useState<boolean>(false);
   const [volume, setVolume] = useState<number>(0.5);
-  const meta = useAudioMetaData;
   useEffect(() => {
     const loadMetaData = async () => {
       const playlistWithMetaData = await Promise.all(
